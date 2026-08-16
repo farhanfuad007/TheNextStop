@@ -1,0 +1,208 @@
+<!-- ============================================================
+     BACKGROUND FIELD — ambient compass-line canvas, sits behind everything
+============================================================= -->
+<div class="bg-field" aria-hidden="true">
+  <div class="bg-glow"></div>
+  <svg class="bg-lines" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <circle cx="600" cy="400" r="120" class="compass-ring ring-1"/>
+    <circle cx="600" cy="400" r="240" class="compass-ring ring-2"/>
+    <circle cx="600" cy="400" r="360" class="compass-ring ring-3"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     TOP BAR — persistent path / breadcrumb trail
+============================================================= -->
+<header class="topbar">
+  <button class="brand" id="brandHome" aria-label="Next Step home">
+    <span class="brand-mark">N</span>
+    <span class="brand-word">Next Step</span>
+  </button>
+
+  <nav class="trail" id="trail" aria-label="Your path">
+    <!-- populated by JS -->
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- ============================================================
+       VIEW 1 — LANDING
+  ============================================================= -->
+  <section class="view view-landing is-active" id="view-landing" data-view="landing">
+
+    <div class="hero">
+      <p class="eyebrow"><span class="eyebrow-dot"></span>For every student before the form is submitted</p>
+
+      <h1 class="hero-title">
+        Choose your subject <em>before</em><br>
+        your subject chooses your life.
+      </h1>
+
+      <p class="hero-sub">
+        Next Step is a map of every academic path — what it actually asks of you,
+        what a normal Tuesday in that career looks like, and who tends to regret it later.
+        Explore before you commit. Not after.
+      </p>
+
+      <button class="btn-deepdive" id="deepDiveBtn">
+        <span class="btn-deepdive-label">Deep Dive</span>
+        <span class="btn-deepdive-icon">↓</span>
+      </button>
+    </div>
+
+    <div class="why-section" id="whySection">
+      <div class="why-inner">
+        <span class="section-eyebrow">Why this matters</span>
+        <h2 class="why-title">The most expensive mistake in a student's life<br>is rarely the exam. It's the guess.</h2>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <span class="why-number">The problem</span>
+            <p>Every year, thousands of students sit for admission tests having spent months
+            preparing for exams — and almost no time understanding the actual subjects they're
+            applying for. They pick a department based on a rumor, a relative's opinion, or a
+            ranking list, not because they understood what four years inside that subject
+            actually looks like.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-number">The regret</span>
+            <p>Somewhere between the first semester and graduation, a huge number of students
+            quietly realize they're in the wrong place. Not because they failed — but because
+            nobody showed them, before they enrolled, what a chemical engineer actually does
+            on a Tuesday, or that "Computer Science" and "Software Engineering" are not the
+            same degree at all.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-number">The fix</span>
+            <p>You cannot undo a wrong decision made blind. But you can prevent one. Explore
+            every category, every subject, every sub-field — the real admission path, the
+            real day-to-day, and the honest regrets other students report — before you write
+            a single subject choice on a form.</p>
+          </div>
+        </div>
+
+        <button class="btn-solid btn-large" id="enterExplorerBtn">
+          Explore every subject
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       VIEW 2 — CATEGORY SELECT
+  ============================================================= -->
+  <section class="view view-categories" id="view-categories" data-view="categories">
+    <div class="view-header">
+      <span class="section-eyebrow">Step one</span>
+      <h2 class="view-title">Pick a direction.</h2>
+      <p class="view-sub">Every subject on Earth falls into one of these five territories. Start broad — you'll narrow it down next.</p>
+    </div>
+
+    <div class="category-grid" id="categoryGrid">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VIEW 3 — SUBJECT GRID (within a category)
+  ============================================================= -->
+  <section class="view view-subjects" id="view-subjects" data-view="subjects">
+    <div class="view-header">
+      <span class="section-eyebrow" id="subjectsEyebrow">Step two</span>
+      <h2 class="view-title" id="subjectsTitle">—</h2>
+      <p class="view-sub" id="subjectsSub">—</p>
+    </div>
+
+    <div class="subject-grid" id="subjectGrid">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VIEW 4 — SUBJECT DETAIL
+  ============================================================= -->
+  <section class="view view-detail" id="view-detail" data-view="detail">
+
+    <div class="detail-header">
+      <span class="section-eyebrow" id="detailEyebrow">Step three</span>
+      <h2 class="detail-title" id="detailTitle">—</h2>
+      <p class="detail-short" id="detailShort">—</p>
+    </div>
+
+    <div class="detail-body">
+
+      <div class="detail-block">
+        <h3 class="block-label">What it actually is</h3>
+        <p class="block-text" id="detailOverview">—</p>
+      </div>
+
+      <div class="detail-block">
+        <h3 class="block-label">A day in this life</h3>
+        <p class="block-text" id="detailDayLife">—</p>
+      </div>
+
+      <div class="detail-block">
+        <h3 class="block-label">How to actually get there</h3>
+        <ol class="path-list" id="detailPath">
+          <!-- populated by JS -->
+        </ol>
+      </div>
+
+      <div class="detail-block">
+        <h3 class="block-label" id="subfieldsLabel">Where this branches</h3>
+        <div class="subfield-grid" id="subfieldGrid">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <div class="detail-block real-talk-block">
+        <h3 class="block-label">Real talk</h3>
+        <p class="block-text real-talk-text" id="detailRealTalk">—</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VIEW 5 — DEEP DIVE (e.g. Cyber Security segments)
+  ============================================================= -->
+  <section class="view view-deepdive" id="view-deepdive" data-view="deepdive">
+
+    <div class="detail-header">
+      <span class="section-eyebrow">Inside the field</span>
+      <h2 class="detail-title" id="deepdiveTitle">—</h2>
+      <p class="detail-short" id="deepdiveIntro">—</p>
+    </div>
+
+    <div class="detail-body">
+      <div class="detail-block">
+        <h3 class="block-label">The segments</h3>
+        <div class="segment-list" id="segmentList">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <div class="detail-block real-talk-block">
+        <h3 class="block-label">How to prepare</h3>
+        <p class="block-text real-talk-text" id="deepdivePrep">—</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Next Step — built so the choice comes before the regret, not after.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
